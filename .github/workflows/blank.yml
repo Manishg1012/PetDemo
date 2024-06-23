@@ -34,6 +34,11 @@ jobs:
         echo "xstream.whitelist.path=jmeter.properties" >> jmeter.properties
         echo "xstream.security.read-additional-allowed=true" >> jmeter.properties
         echo "search_path=$HOME/apache-jmeter-5.6.3/lib/ext;$search_path" >> jmeter.properties
+        echo "search_path=$HOME/apache-jmeter-5.6.3/lib/ext;$search_path" | sudo tee -a /etc/jmeter/jmeter.properties
+        echo "classfinder.reflection.allowed=false" | sudo tee -a /etc/jmeter/jmeter.properties
+        echo "xstream.whitelist.path=/etc/jmeter/jmeter.properties" | sudo tee -a /etc/jmeter/jmeter.properties
+        echo "xstream.security.read-additional-allowed=true" | sudo tee -a /etc/jmeter/jmeter.properties
+        echo "xstream.security.read-additional-allowed=true" | sudo tee -a /etc/jmeter/jmeter.properties
 
     - name: Verify JMeter installation
       run: jmeter --version
@@ -47,8 +52,7 @@ jobs:
 
     - name: Generate JMeter Dashboard Report
       run: |
-        sudo apt-get install -y jmeter
-        jmeter -e results.jtl -o jmeter_report
+        jmeter -g results.jtl -o jmeter_report
 
     - name: Upload JMeter Report
       uses: actions/upload-artifact@v2
