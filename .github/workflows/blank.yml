@@ -27,9 +27,16 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y jmeter
 
+    - name: Verify JMeter installation
+      run: jmeter --version
+
     - name: Run JMeter Test
       run: |
-        jmeter -n -t PetStoreDemo.jmx -l results.jtl -e -o jmeter_report
+        jmeter -n -t PetStoreDemo.jmx -l results.jtl
+
+    - name: Generate JMeter Dashboard Report
+      run: |
+        jmeter -g results.jtl -o jmeter_report
 
     - name: Upload JMeter Report
       uses: actions/upload-artifact@v2
