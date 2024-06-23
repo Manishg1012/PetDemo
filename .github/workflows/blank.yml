@@ -30,6 +30,9 @@ jobs:
     - name: Verify JMeter installation
       run: jmeter --version
 
+    - name: List Files in Repository
+      run: ls -la
+
     - name: Run JMeter Test
       run: |
         jmeter -n -t PetStoreDemo.jmx -l results.jtl
