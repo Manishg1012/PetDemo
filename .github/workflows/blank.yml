@@ -35,11 +35,11 @@ jobs:
 
     - name: Run JMeter Test
       run: |
-        jmeter -n -t PetStoreDemo.jmx -l results.jtl
+        jmeter -n -t C:\Users\ManishGupta\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\PetDemoFile\PetStoreDemo.jmx -l C:\Users\ManishGupta\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\Dummy1\test1.jtl
 
     - name: Generate JMeter Dashboard Report
       run: |
-        jmeter -g results.jtl -o jmeter_report
+         -e -o C:\Users\ManishGupta\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\Dummyreport1
 
     - name: Upload JMeter Report
       uses: actions/upload-artifact@v2
