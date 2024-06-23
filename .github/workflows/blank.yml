@@ -27,6 +27,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y jmeter
 
+    - name: Update JMeter Configuration
+      run: |
+        echo "search_path=<JMeter_path>" > jmeter.properties
+        echo "classfinder.reflection.allowed=false" >> jmeter.properties
+        echo "xstream.whitelist.path=jmeter.properties" >> jmeter.properties
+        echo "xstream.security.read-additional-allowed=true" >> jmeter.properties
+        echo "search_path=$HOME/apache-jmeter-5.6.3/lib/ext;$search_path" >> jmeter.properties
+
     - name: Verify JMeter installation
       run: jmeter --version
 
