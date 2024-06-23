@@ -48,7 +48,7 @@ jobs:
     - name: Generate JMeter Dashboard Report
       run: |
         sudo apt-get install -y jmeter
-        jmeter -g results.jtl -o jmeter_report
+        jmeter -e results.jtl -o jmeter_report
 
     - name: Upload JMeter Report
       uses: actions/upload-artifact@v2
