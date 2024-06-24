@@ -29,10 +29,10 @@ jobs:
         run: mkdir -p reports/html
 
       - name: JMeter Test
-        run: $HOME/apache-jmeter/bin/PetDemoFile -n -t PetStoreDemo.jmx -l result.jtl
+        run: $HOME/apache-jmeter/PetDemoFile -n -t PetStoreDemo.jmx -l result.jtl
 
       - name: Generate HTML Report
-        run: $HOME/apache-jmeter/bin/PetDemoFile -g result.jtl -o ./reports/html/
+        run: $HOME/apache-jmeter/PetDemoFile -g result.jtl -o ./reports/html/
 
       - name: Upload Results
         uses: actions/upload-artifact@v3
